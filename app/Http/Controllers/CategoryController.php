@@ -16,7 +16,6 @@ class CategoryController extends Controller
 
         return view('master-data.category.index', compact('categories'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -24,7 +23,6 @@ class CategoryController extends Controller
     {
         return view('master-data.category.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -41,7 +39,6 @@ class CategoryController extends Controller
             ->route('categories.index')
             ->with('success', 'Kategori berhasil ditambahkan.');
     }
-
     /**
      * Display the specified resource.
      */
@@ -49,7 +46,6 @@ class CategoryController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -57,7 +53,6 @@ class CategoryController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -65,7 +60,6 @@ class CategoryController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      */

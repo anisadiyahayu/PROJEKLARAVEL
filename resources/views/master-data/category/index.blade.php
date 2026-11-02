@@ -1,3 +1,4 @@
+
 <x-app-layout>
 
     <x-slot name="header">
@@ -11,9 +12,16 @@
 
             <x-card>
 
-                <h3 class="text-lg font-semibold mb-4">
-                    Daftar Kategori
-                </h3>
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">
+                        Daftar Kategori
+                    </h3>
+
+                    <a href="{{ route('categories.create') }}"
+                       class="bg-indigo-600 text-white px-4 py-2 rounded-md">
+                        + Tambah Kategori
+                    </a>
+                </div>
 
                 @if (session('success'))
                     <div class="mb-4 text-green-600">

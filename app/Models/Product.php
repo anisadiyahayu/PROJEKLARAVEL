@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Product extends Model
 {
-
     use HasFactory;
-
     protected $fillable = [
         'category_id',
         'code',
@@ -19,17 +17,14 @@ class Product extends Model
         'price',
         'stock',
     ];
-
         public function category()
     {
         return $this->belongsTo(Category::class);
     }
- 
     public function transactionDetails()
     {
         return $this->hasMany(TransactionDetail::class);
     }
-
     protected function priceRupiah(): Attribute
     {
         return Attribute::make(

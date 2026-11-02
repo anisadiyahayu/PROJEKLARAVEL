@@ -10,11 +10,8 @@
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
 
             <x-card>
-
                 <form action="{{ route('categories.store') }}" method="POST" class="space-y-4">
-
                     @csrf
-
                     <div>
                         <label class="block text-sm font-medium text-gray-700">
                             Nama Kategori

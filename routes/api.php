@@ -8,7 +8,8 @@ use App\Http\Controllers\ProductController;
 Route::get('/products', [ProductController::class, 'index']);
 
 // ATAU jika menggunakan Resource Controller:
-Route::apiResource('products', ProductController::class);
+Route::apiResource('products', ProductController::class)
+    ->names('api.products');
 
 Route::get('/user', function (Request $request) {
     return $request->user();
