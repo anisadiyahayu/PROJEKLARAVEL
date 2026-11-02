@@ -33,15 +33,15 @@ Route::get('/products', function () {
 
 
 use App\Http\Controllers\Auth\LoginController;
- 
+
 Route::get('/login', [LoginController::class, 'create'])
     ->middleware('guest')
     ->name('login');
- 
+
 Route::post('/login', [LoginController::class, 'store'])
     ->middleware('guest')
     ->name('login.store');
- 
+
 Route::post('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
@@ -51,18 +51,18 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('products', ProductController::class);
     Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
 });
- 
+
 Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
     Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
     Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
 
     Route::get('/pos/history', function () {
-    return 'Riwayat Transaksi Saya';
+        return 'Riwayat Transaksi Saya';
     })
-    ->middleware(['auth', 'role:kasir'])
-    ->name('pos.history');
-    
+        ->middleware(['auth', 'role:kasir'])
+        ->name('pos.history');
 });
+
 
 // ========
 // CODINGAN TUGAS
@@ -76,16 +76,22 @@ Route::get('/users', [UserController::class, 'index'])
 
 
 
-    // =======
-    // CODINGAN MATERI PERTEMUAN 5
-    // =======
+// =======
+// CODINGAN MATERI PERTEMUAN 5
+// =======
 
-Route::get('/index', function(){
-    $posts =[
+Route::get('/index', function () {
+    $posts = [
         (object)['title' => 'Belajar blade bro', 'published' => true],
         (object)['title' => 'saya tdk bs kasih tips', 'published' => false],
         (object)['title' => 'Belajar blade bro', 'published' => true],
     ];
     return view('posts.index', compact('posts'));
+});
 
+
+Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
+    Route::get('/pos', [PosController::class, 'index'])->name('pos.index');
+    Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
+    Route::get('/pos/{transaction}/struk', [PosController::class, 'struk'])->name('pos.struk');
 });
